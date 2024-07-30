@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Jacob T - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About Me</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#interests" class="nav-link">Interests</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="hero">
+        <div class="name-banner" id="home">
+            <h1>Thomas Jacob T</h1>
+            <p>Passionate Developer & Machine Learning Enthusiast</p>
+        </div>
+        <div id="content"></div> <!-- Content container -->
+    </div>
+    <footer>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p><a href="https://www.linkedin.com/in/thomas-thazhathillath-679486278">LinkedIn</a> | <a href="https://github.com/ThomasThazhathillath">GitHub</a> | <a href="mailto:thomas.jacob1034@gmail.com">Email</a> | Mobile: +91-8105209416</p>
+        </section>
+        <p>© 2024 Thomas Jacob T. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentDiv = document.getElementById('content');
+            const homeDiv = document.getElementById('home');
+
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    console.log('Clicked link:', targetId); // Debugging log
+                    if (targetId === 'home') {
+                        homeDiv.style.display = 'block'; // Show home
+                        contentDiv.style.display = 'none'; // Hide content
+                    } else {
+                        homeDiv.style.display = 'none'; // Hide home
+                        loadContent(targetId);
+                    }
+                });
+            });
+
+            function loadContent(id) {
+                const contentMap = {
+                    'about': `<section>
+                                <h2>About Me</h2>
+                                <p>I am a Computer Science student with a passion for web development, machine learning, and software engineering. Currently pursuing a B.Tech in Computer Science from Sapthagiri College of Engineering, Bangalore.</p>
+                              </section>`,
+                    'education': `<section>
+                                    <h2>Education</h2>
+                                    <p><strong>Sapthagiri College of Engineering</strong>, Bengaluru<br>B.Tech in Computer Science | CGPA: 9.07<br>Dec 2021 - July 2025</p>
+                                  </section>`,
+                    'skills': `<section>
+                                 <h2>Skills</h2>
+                                 <p><strong>Languages:</strong> Python, HTML, CSS, SQL, AngularJS<br><strong>Frameworks:</strong> Django<br><strong>Databases:</strong> MySQL, SQLite</p>
+                               </section>`,
+                    'experience': `<section>
+                                     <h2>Experience</h2>
+                                     <p><strong>Intern at Karunadu Technologies Pvt Ltd</strong><br>Oct 2023 - Nov 2023<br>Developed a GUI application for Heart Failure Prediction using Logistic Regression. Improved coding standards and learned feature engineering techniques.</p>
+                                   </section>`,
+                    'projects': `<section>
+                                   <h2>Projects</h2>
+                                   <p class="empty-projects">Project links will be posted here later.</p>
+                                 </section>`,
+                    'interests': `<section>
+                                    <h2>Interests</h2>
+                                    <p>Python programming, Web Development, Machine Learning</p>
+                                  </section>`
+                };
+                const contentHTML = contentMap[id] || '';
+                console.log('Loading content for:', id); // Debugging log
+                console.log('Content:', contentHTML); // Debugging log
+                contentDiv.innerHTML = contentHTML;
+                contentDiv.style.display = 'block'; // Show content
+            }
+        });
+    </script>
+</body>
+</html>
